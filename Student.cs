@@ -129,7 +129,38 @@ namespace StudentDemo
         /* Validates the Kimlik number - this is the one to work on... */
         private bool isValidKimlik(string kimlikNumber) 
         {
-            return true;
+            bool isValid = true; //Boolean flag. The kimlik is innocent until proven guilty :)
+            int[] kimlikArray = new int[11];
+            // The easy one first - is the string the correct length
+            if (if (kimlikNumber.Length != 11) 
+            {
+                isValid = false;
+                return isValid; //No point in further tests - return false and finish
+            }
+            else  // now we can run each further test as long as the Kimlik has survived the preceeding test
+            {
+                /* iterates through each character of the Kimlik string, tries to parse it as an int
+                 * and then stores that int in the corresponding index of the array. If the parse
+                 * fails (i.e. the character was not an int), the isValid flag is set to false and the 
+                 * loop breaks prematurely
+                 */
+                
+                for (int digit = 0, digit < 11, digit++)
+                {
+                    isValid = int.TryParse(kimlikNumber.Substring(digit), out kimlikArray[digit]);
+                    if (!isValid) break;
+                }
+                
+                if (isValid){//next test...}
+            }
+           
+            
+            
+            
+            
+            
+            
+            return isValid;
         }
         
         /* Validates the email address*/
