@@ -51,6 +51,11 @@ namespace StudentDemo
         {
             this.birthYear = birthYear;
         }
+        
+        /* By making the methods that include data validation
+         * return a boolean they can report back to the calling 
+         * method to indicate whether the set has been successful or not.
+         */
 
         public bool setEmail(string email)
         {
@@ -65,11 +70,7 @@ namespace StudentDemo
                 return false;
             }
         }
-        
-        /* By making this method return a boolean it can report
-         * back to the calling method to indicate whether the
-         * Kimlik number has been successfully set or not.
-         */
+              
         public bool setKimlikNumber(string kimlikNumber)
         {
             if (isValidKimlik(kimlikNumber)) //see stub method below
@@ -117,20 +118,21 @@ namespace StudentDemo
         }
 
 
-
         public string getKimlikNumber()
         {
             return kimlikNumber;
         }
         
+        /* Validation methods */
         
-
-        private bool isValidKimlik(string kimlikNumber) {
-
+        
+        /* Validates the Kimlik number - this is the one to work on... */
+        private bool isValidKimlik(string kimlikNumber) 
+        {
             return true;
         }
         
-        /* Validates the email address using a Regex object */
+        /* Validates the email address*/
         private bool isValidAddress(string email) 
         {
             /*If the regular expression (regex) included here doesn't meet expectations 
@@ -140,7 +142,7 @@ namespace StudentDemo
             
             Regex regex = new Regex(@"^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,6})$");
             Match match = regex.Match(email);
-            return match.Success;
+            return match.Success; //If the address is valid, match.Success returns true, else false.
         }
         
         /* Method to pop-up an error MessageBox box, 
