@@ -145,9 +145,7 @@ namespace StudentDemo
             return match.Success; //If the address is valid, match.Success returns true, else false.
         }
         
-        /* Method to pop-up an error MessageBox box, 
-         * mainly included to save copy/paste in the code of the methods that use data validation.
-         */
+        /* Method to pop-up an error MessageBox box */
         private void showErrorMessage(string header, string message) 
         {
             MessageBox.Show(header, message,
