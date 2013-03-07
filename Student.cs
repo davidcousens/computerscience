@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 
 namespace StudentDemo
@@ -50,9 +52,18 @@ namespace StudentDemo
             this.birthYear = birthYear;
         }
 
-        public void setEmail(string email)
+        public bool setEmail(string email)
         {
+            if (isValidAddress(email))
+            {
                 this.email = email;
+                return true;
+            }
+            else 
+            {
+                showErrorMessage("Error", "Invalid email address");
+                return false;
+            }
         }
         
         /* By making this method return a boolean it can report
@@ -105,14 +116,42 @@ namespace StudentDemo
             return email;
         }
 
+
+
         public string getKimlikNumber()
         {
             return kimlikNumber;
         }
+        
+        
 
         private bool isValidKimlik(string kimlikNumber) {
 
             return true;
+        }
+        
+        /* Validates the email address using a Regex object */
+        private bool isValidAddress(string email) 
+        {
+            /*If the regular expression (regex) included here doesn't meet expectations 
+             *there are loads more on the internet. 
+             *Try: http://regexlib.com/DisplayPatterns.aspx?AspxAutoDetectCookieSupport=1
+             */
+            
+            Regex regex = new Regex(@"^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,6})$");
+            Match match = regex.Match(email);
+            return match.Success;
+        }
+        
+        /* Method to pop-up an error MessageBox box, 
+         * mainly included to save copy/paste in the code of the methods that use data validation.
+         */
+        private void showErrorMessage(string header, string message) 
+        {
+            MessageBox.Show(header, message,
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Exclamation,
+            MessageBoxDefaultButton.Button1);
         }
 
     }
