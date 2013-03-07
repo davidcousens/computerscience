@@ -79,8 +79,8 @@ namespace StudentDemo
             }
             else 
             {
-                //error message
-                return false;               
+                showErrorMessage("Error", "Invalid Kimlik Number");
+                return false;             
             }
         }
 
