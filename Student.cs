@@ -150,7 +150,7 @@ namespace StudentDemo
 						}
 					}
 					if ((firstSubTotal*7 - secondSubTotal) % 10 == kimlikCharArray[9]){
-						isValid = firstSubTotal+secondSubTotal+kimlikCharArray[9] == kimlikCharArray[10]; // This tests sophisticated kimlik number structure :)
+						isValid = (firstSubTotal+secondSubTotal+kimlikCharArray[9]) % 10 == kimlikCharArray[10]; // This tests sophisticated kimlik number structure :)
 					}
 				}
 			} else { isValid = false; }
